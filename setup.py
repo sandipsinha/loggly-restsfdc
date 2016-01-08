@@ -14,11 +14,11 @@ except ImportError:
     from distutils.core import setup
 
 setup(
-    name='logglyrestsfdc',
+    name='loggly Rest SFDC',
     author='Sandip Sinha',
     author_email='ssinha@loggly.com',
     version=logglyrestsfdc.__version__,
-    packages=['logglyrestsfdc', 'logglyrestsfdc.tests'],
+    packages=['logglyrestsfdc'],
     long_description=open( 'README.md' ).read(),
     install_requires=open('requirements.txt').read().strip().split('\n')
     )
