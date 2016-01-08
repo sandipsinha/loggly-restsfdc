@@ -24,7 +24,7 @@ class sfdcrestClient(object):
 
     def __init__(self, userid=sfdcconfig.get('Sandbox','userid'), passwd = sfdcconfig.get('Sandbox','passwd'),
                  security_token = sfdcconfig.get('Sandbox','security_token'), sandbox=sfdcconfig.get('Sandbox','sandbox'),
-                 instance=None, version=DEFAULT_API_VERSION):
+                 instance=None):
         assert(sfdcconfig.get('Sandbox','userid') is not None)
         assert(sfdcconfig.get('Sandbox','passwd') is not None)
         assert(sfdcconfig.get('Sandbox','security_token') is not None)
