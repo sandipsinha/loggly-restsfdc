@@ -1,6 +1,7 @@
 # loggly-restsfdc
 A wrapper around the simple-salesforce module to ease making REST API calls to SFDC
-##Create a client by instantiating a restsfdc client
+##Create a client by instantiating a rest based SFDC client
+
 ```sh
 sf = sfdcrest.sfdcrestClient()
 ```
