@@ -20,5 +20,5 @@ setup(
     version=logglyrestsfdc.__version__,
     packages=['logglyrestsfdc'],
     long_description=open( 'README.md' ).read(),
-    install_requires=open('requirements.txt').read().strip().split('\n')
+    install_requires=["requires"]
     )

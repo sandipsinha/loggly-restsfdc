@@ -22,16 +22,16 @@ class sfdcrestClient(object):
     sf_instance = None
     session_id = None
 
-    def __init__(self, userid=sfdcconfig.get('Sandbox','userid'), passwd = sfdcconfig.get('Sandbox','passwd'),
-                 security_token = sfdcconfig.get('Sandbox','security_token'), sandbox=sfdcconfig.get('Sandbox','sandbox'),
+    def __init__(self, userid=sfdcconfig.get('sfdc','userid'), passwd = sfdcconfig.get('sfdc','passwd'),
+                 security_token = sfdcconfig.get('sfdc','security_token'), sandbox=sfdcconfig.get('sfdc','sandbox'),
                  instance=None):
-        assert(sfdcconfig.get('Sandbox','userid') is not None)
-        assert(sfdcconfig.get('Sandbox','passwd') is not None)
-        assert(sfdcconfig.get('Sandbox','security_token') is not None)
-        self.userid = sfdcconfig.get('Sandbox','userid')
-        self.passwd = sfdcconfig.get('Sandbox','passwd')
-        self.security_token = sfdcconfig.get('Sandbox','security_token')
-        self.sandbox = sfdcconfig.get('Sandbox','sandbox')
+        assert(sfdcconfig.get('sfdc','userid') is not None)
+        assert(sfdcconfig.get('sfdc','passwd') is not None)
+        assert(sfdcconfig.get('sfdc','security_token') is not None)
+        self.userid = sfdcconfig.get('sfdc','userid')
+        self.passwd = sfdcconfig.get('sfdc','passwd')
+        self.security_token = sfdcconfig.get('sfdc','security_token')
+        self.sandbox = sfdcconfig.get('sfdc','sandbox')
         self.sf_instance = Salesforce(
                 username=self.userid,
                 password=self.passwd,
