@@ -32,13 +32,17 @@ class sfdcrestClient(object):
         self.passwd = sfdcconfig.get('sfdc','passwd')
         self.security_token = sfdcconfig.get('sfdc','security_token')
         self.sandbox = sfdcconfig.get('sfdc','sandbox')
-        self.sf_instance = Salesforce(
+        if sfdcconfig.get('sfdc','sandbox'):
+            self.sf_instance = Salesforce(
+                username=self.userid,
+                password=self.passwd,
+                security_token=self.security_token,
+                sandbox=True)
+        else:
+            self.sf_instance = Salesforce(
                 username=self.userid,
                 password=self.passwd,
                 security_token=self.security_token)
-
-
-
 
 
     def execute(self, event, *args, **kwargs):
