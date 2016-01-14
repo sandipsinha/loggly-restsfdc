@@ -35,8 +35,7 @@ class sfdcrestClient(object):
         self.sf_instance = Salesforce(
                 username=self.userid,
                 password=self.passwd,
-                security_token=self.security_token,
-                sandbox=self.sandbox)
+                security_token=self.security_token)
 
 
 
