@@ -10,9 +10,9 @@ from logglyrestsfdc  import sfdcrest
 ####Create a client by instantiating a rest based SFDC client
 
 ```sh
-sf = sfdcrest.sfdcrestClient()
+sf = sfdcrest.sfdcrestClient(<instance>)    instance can be prod or sandbox
 ```
-Note: It expects a file with all the required SFDC credentials in the folder /etc/analytics/sfdcrest.conf. 
+Note: It expects a file with all the required SFDC credentials in the file config.py.  
 The other option is to put it in the conf dolder of the directory structure. Take a look at the sameple file structure
 to get an idea of how the config file should look like
 
