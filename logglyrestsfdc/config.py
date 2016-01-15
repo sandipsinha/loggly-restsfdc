@@ -1,3 +1,4 @@
+__author__ = 'ssinha'
 """
 	" Copyright:    Loggly, Inc.
 	" Author:       sandip Sinha
@@ -17,9 +18,8 @@ prod = {
 }
 
 sandbox = {
-    'username': 'integration@loggly.com.sandbox99',
-    'password': 'D0ll4r$4L0gs',
-    'token'   : '2moT2dyctCujjYq76bHP66Rra',
+    'username': 'xx',
+    'password': 'xx',
+    'token'   : 'xxx',
     'wsdl'    : 'Not needed',
 }
-
