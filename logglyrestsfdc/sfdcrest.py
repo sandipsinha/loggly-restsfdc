@@ -8,10 +8,10 @@ __author__ = 'ssinha'
 """
 
 from simple_salesforce import Salesforce, SalesforceResourceNotFound
-from logglyrestsfdc import sfdcconfig
-from simple_salesforce.login import SalesforceLogin
 from logglyrestsfdc.helper.exceptions import SFDCRestExceptions
 SUCCESS_STATUS_CODE=204
+import config
+import collections
 
 
 class sfdcrestClient(object):
@@ -22,17 +22,18 @@ class sfdcrestClient(object):
     sf_instance = None
     session_id = None
 
-    def __init__(self, userid=sfdcconfig.get('sfdc','userid'), passwd = sfdcconfig.get('sfdc','passwd'),
-                 security_token = sfdcconfig.get('sfdc','security_token'), sandbox=sfdcconfig.get('sfdc','sandbox'),
-                 instance=None):
-        assert(sfdcconfig.get('sfdc','userid') is not None)
-        assert(sfdcconfig.get('sfdc','passwd') is not None)
-        assert(sfdcconfig.get('sfdc','security_token') is not None)
-        self.userid = sfdcconfig.get('sfdc','userid')
-        self.passwd = sfdcconfig.get('sfdc','passwd')
-        self.security_token = sfdcconfig.get('sfdc','security_token')
-        self.sandbox = sfdcconfig.get('sfdc','sandbox')
-        if sfdcconfig.get('sfdc','sandbox'):
+    def __init__(self, env):
+        settings = getattr( config, env )
+        configp = collections.namedtuple('configp', 'username passwd security_token')
+        rs =  configp( username = settings['username'], passwd = settings['password'], security_token = settings['token'])
+        assert(rs.username is not None)
+        assert(rs.passwd is not None)
+        assert(rs.security_token is not None)
+        self.userid = rs.username
+        self.passwd = rs.passwd
+        self.security_token = rs.security_token
+        import ipdb;ipdb.set_trace()
+        if env == 'sandbox':
             self.sf_instance = Salesforce(
                 username=self.userid,
                 password=self.passwd,
