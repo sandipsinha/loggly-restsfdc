@@ -32,7 +32,6 @@ class sfdcrestClient(object):
         self.userid = rs.username
         self.passwd = rs.passwd
         self.security_token = rs.security_token
-        import ipdb;ipdb.set_trace()
         if env == 'sandbox':
             self.sf_instance = Salesforce(
                 username=self.userid,
