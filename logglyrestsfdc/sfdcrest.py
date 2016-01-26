@@ -49,6 +49,7 @@ class sfdcrestClient(object):
         method_map={
                 'get-opportunity':self.get_opportunity,
                 'update-opportunity':self.update_opportunity,
+                'create-opportunity':self.create_opportunity,
                    }
         result = method_map[event](*args, **kwargs)
         return result
@@ -77,6 +78,28 @@ class sfdcrestClient(object):
         except SFDCRestExceptions as e:
             raise Exception({'messages': e.message,'code':e.code})
             return false
+
+
+    def create_opportunity(self, record_id, data):
+        """
+        Arguments:
+        * record_id -- the Id of the SObject to update
+        * data -- a dict of the data to update the SObject from.
+        """
+        if isinstance(data, dict) and 'Subdomain__c' in data:
+
+            try:
+                insertstatus = self.sf_instance.Opportunity.create(data)
+                if insertstatus.success:
+                    return True
+            except SFDCRestExceptions as e:
+                raise Exception({'messages': e.message,'code':e.code})
+                return false
+
+        else:
+            
+            print 'Not enough data to create a SFDC Opportunity'
+            return False
 
 
 
