@@ -50,6 +50,7 @@ class sfdcrestClient(object):
                 'get-opportunity':self.get_opportunity,
                 'update-opportunity':self.update_opportunity,
                 'create-opportunity':self.create_opportunity,
+                'delete-opportunity':self.delete_opportunity,
                    }
         result = method_map[event](*args, **kwargs)
         return result
@@ -97,9 +98,22 @@ class sfdcrestClient(object):
                 return false
 
         else:
-            
             print 'Not enough data to create a SFDC Opportunity'
             return False
+
+    def delete_opportunity(selfself, Id):
+        """
+        Arguments:
+        * record_id -- the Id of the SObject to delete
+        """
+        try:
+            deletestatus = self.sf_instance.Opportunity.create(data)
+            if deletestatus == SUCCESS_STATUS_CODE:
+                 return True
+        except SFDCRestExceptions as e:
+            raise Exception({'messages': e.message,'code':e.code})
+            return false
+
 
 
 
