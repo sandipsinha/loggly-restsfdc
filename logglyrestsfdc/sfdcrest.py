@@ -51,6 +51,8 @@ class sfdcrestClient(object):
                 'update-opportunity':self.update_opportunity,
                 'create-opportunity':self.create_opportunity,
                 'delete-opportunity':self.delete_opportunity,
+                'get-contact':self.get_contact,
+                'update-contact':self.update_contact,
                    }
         result = method_map[event](*args, **kwargs)
         return result
@@ -101,7 +103,7 @@ class sfdcrestClient(object):
             print 'Not enough data to create a SFDC Opportunity'
             return False
 
-    def delete_opportunity(selfself, Id):
+    def delete_opportunity(self, Id):
         """
         Arguments:
         * record_id -- the Id of the SObject to delete
@@ -113,6 +115,33 @@ class sfdcrestClient(object):
         except SFDCRestExceptions as e:
             raise Exception({'messages': e.message,'code':e.code})
             return false
+
+    def get_contact(self,custom_name, custom_value):
+        """
+        Arguments:
+        custom_name: Name of the field
+        custom_value: Value of the field
+        """
+        try:
+            result = self.sf_instance.Contact.get_by_custom_id(custom_name, custom_value)
+            return result
+        except SFDCRestExceptions as e:
+            raise Exception({'messages': e.message,'code':e.code})
+            return None
+
+
+    def update_contact(self,contactId, uodateValues):
+        """
+        Arguments:
+        contactId: Contact ID
+        Contact_value: A dict of the fields that need to be updated
+        """
+        try:
+            result = self.sf_instance.Contact.update(contactId, uodateValues)
+            return result
+        except SFDCRestExceptions as e:
+            raise Exception({'messages': e.message,'code':e.code})
+            return None
 
 
 
