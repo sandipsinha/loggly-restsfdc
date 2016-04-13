@@ -64,6 +64,9 @@ class sfdcrestClient(object):
         except SFDCRestExceptions as e:
             raise Exception(exc={'messages': e.message,'code':e.code})
             return None
+        except SalesforceResourceNotFound as e:
+            raise Exception(exc={'messages': e.message,'code':e.code})
+            return None
 
 
 
@@ -126,6 +129,9 @@ class sfdcrestClient(object):
             result = self.sf_instance.Contact.get_by_custom_id(custom_name, custom_value)
             return result
         except SFDCRestExceptions as e:
+            raise Exception(exc={'messages': e.message,'code':e.code})
+            return None
+        except SalesforceResourceNotFound as e:
             raise Exception(exc={'messages': e.message,'code':e.code})
             return None
 
