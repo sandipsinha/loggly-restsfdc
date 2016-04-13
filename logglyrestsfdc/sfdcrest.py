@@ -7,7 +7,7 @@ __author__ = 'ssinha'
 "               to evolve as more and more programs will need to be interfaced with SFDC.
 """
 
-from simple_salesforce import Salesforce, SalesforceResourceNotFound
+from simple_salesforce import Salesforce, SalesforceResourceNotFound, SalesforceMoreThanOneRecord
 from logglyrestsfdc.helper.exceptions import SFDCRestExceptions
 SUCCESS_STATUS_CODE=204
 import config
@@ -66,6 +66,9 @@ class sfdcrestClient(object):
             return None
         except SalesforceResourceNotFound as e:
             print ('Resource errored out')
+            return None
+        except SalesforceMoreThanOneRecord as e:
+            print 'More than 1 contact found'
             return None
 
 
@@ -133,6 +136,9 @@ class sfdcrestClient(object):
             return None
         except SalesforceResourceNotFound as e:
             print ('Resource Not Found')
+            return None
+        except SalesforceMoreThanOneRecord as e:
+            print 'More than 1 contact found'
             return None
 
 
