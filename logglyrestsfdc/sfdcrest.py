@@ -146,7 +146,7 @@ class sfdcrestClient(object):
             result = self.sf_instance.Contact.update(contactId, uodateValues)
             return result
         except SFDCRestExceptions as e:
-            raise Exception(exc={'messages': e.message,'code':e.code})
+            raise Exception(exc={'messages': e.message,'code':400})
             return None
 
 
