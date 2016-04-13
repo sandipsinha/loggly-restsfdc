@@ -62,10 +62,10 @@ class sfdcrestClient(object):
             result = self.sf_instance.Opportunity.get_by_custom_id(custom_id_field, custom_id)
             return result
         except SFDCRestExceptions as e:
-            raise Exception(exc={'messages': e.message,'code':e.code})
+            print ('Resource errored out')
             return None
         except SalesforceResourceNotFound as e:
-            raise Exception(exc={'messages': e.message,'code':e.code})
+            print ('Resource errored out')
             return None
 
 
@@ -82,7 +82,7 @@ class sfdcrestClient(object):
             if updatestatus == SUCCESS_STATUS_CODE:
                 return True
         except SFDCRestExceptions as e:
-            raise Exception(exc={'messages': e.message,'code':e.code})
+            print ('Resource errored out')
             return false
 
 
@@ -99,7 +99,7 @@ class sfdcrestClient(object):
                 if insertstatus.success:
                     return True
             except SFDCRestExceptions as e:
-                raise Exception(exc={'messages': e.message,'code':e.code})
+                print ('Resource errored out')
                 return false
 
         else:
@@ -116,8 +116,8 @@ class sfdcrestClient(object):
             if deletestatus == SUCCESS_STATUS_CODE:
                  return True
         except SFDCRestExceptions as e:
-            raise Exception(exc={'messages': e.message,'code':e.code})
-            return false
+            print ('Resource errored out')
+            return False
 
     def get_contact(self,custom_name, custom_value):
         """
@@ -129,10 +129,10 @@ class sfdcrestClient(object):
             result = self.sf_instance.Contact.get_by_custom_id(custom_name, custom_value)
             return result
         except SFDCRestExceptions as e:
-            raise Exception(exc={'messages': e.message,'code':e.code})
+            print ('Resource errored out')
             return None
         except SalesforceResourceNotFound as e:
-            raise Exception(exc={'messages': e.message,'code':400})
+            print ('Resource Not Found')
             return None
 
 
@@ -146,7 +146,7 @@ class sfdcrestClient(object):
             result = self.sf_instance.Contact.update(contactId, uodateValues)
             return result
         except SFDCRestExceptions as e:
-            raise Exception(exc={'messages': e.message,'code':400})
+            print ('Resource Not Found')
             return None
 
 
