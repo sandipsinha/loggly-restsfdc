@@ -132,7 +132,7 @@ class sfdcrestClient(object):
             raise Exception(exc={'messages': e.message,'code':e.code})
             return None
         except SalesforceResourceNotFound as e:
-            raise Exception(exc={'messages': e.message,'code':e.code})
+            raise Exception(exc={'messages': e.message,'code':400})
             return None
 
 
