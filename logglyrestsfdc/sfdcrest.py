@@ -135,10 +135,10 @@ class sfdcrestClient(object):
             print ('Resource errored out')
             return None
         except SalesforceResourceNotFound as e:
-            print ('Resource Not Found')
+            print 'Resource Not Found', custom_name
             return None
         except SalesforceMoreThanOneRecord as e:
-            print 'More than 1 contact found'
+            print 'More than 1 contact found', custom_name
             return None
 
 
