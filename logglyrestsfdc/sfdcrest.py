@@ -136,10 +136,13 @@ class sfdcrestClient(object):
             return None
         except SalesforceResourceNotFound as e:
             print 'Resource Not Found', custom_value
-            return None
+            return 'Not Found'
         except SalesforceMoreThanOneRecord as e:
             print 'More than 1 contact found', custom_value
-            return None
+            contactsStr = e.content.split(',')
+            contacts = [x.split('/')[-1] for x in contactsStr ]
+            return contacts
+
 
 
     def update_contact(self,contactId, uodateValues):
