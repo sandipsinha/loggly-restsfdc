@@ -139,7 +139,7 @@ class sfdcrestClient(object):
             return 'Not Found'
         except SalesforceMoreThanOneRecord as e:
             print 'More than 1 contact found', custom_value
-            contactsStr = e.content.split(',')
+            contactsStr = e.content
             contacts = [x.split('/')[-1] for x in contactsStr ]
             return contacts
 
